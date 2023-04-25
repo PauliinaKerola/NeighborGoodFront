@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+
+  .headline
+  {
+    text-align: center;
+    font-family:'Roboto';
+    padding-bottom: 20px;
+    padding-top: 50px;
+    font-size: 30px;
+    font-weight:500;
+    color:#FFCD00;
+  }
+
+  .info {
+    width: 600px;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  th 
+  {
+    padding-right:60px;
+  }

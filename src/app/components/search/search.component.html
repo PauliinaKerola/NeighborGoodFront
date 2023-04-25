@@ -1,0 +1,54 @@
+<div class="background">
+  <div class="container">
+    <div class="row">
+      <mat-form-field appearance="fill" class="search-field">
+        <mat-label>Hakusana</mat-label>
+        <input matInput placeholder="Mitä etsit?" [(ngModel)]="searchTerm">
+        <button type="button" mat-icon-button matSuffix (click)="searchItems()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <mat-accordion [formGroup]="extendedSearch">
+      <mat-expansion-panel class="box">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="extended-search-title">Laajennettu haku</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Hakusana</mat-label>
+            <input matInput placeholder="Mitä etsit?" formControlName="searchTerm">
+            <mat-icon matSuffix><mat-icon>search</mat-icon></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Valitse kategoria</mat-label>
+            <mat-icon matSuffix><mat-icon>list</mat-icon></mat-icon>
+
+            <mat-select formControlName="category">
+              <mat-option value=""></mat-option>
+              <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Paikkakunta</mat-label>
+            <mat-select formControlName="city">
+              <mat-option value=""></mat-option>
+              <mat-option *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
+            </mat-select>
+            <mat-icon matSuffix><mat-icon>location_on</mat-icon></mat-icon>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" (click)="extendedSearchItems()">Hae</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

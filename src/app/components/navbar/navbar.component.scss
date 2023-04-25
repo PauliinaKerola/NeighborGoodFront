@@ -1,0 +1,24 @@
+.toolbar {
+  background-color: #ffcd00;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#left {
+  float:left;
+}
+
+#right {
+  float:right;
+}
+
+#center {
+  margin: 0px auto;
+  width: 200px;
+}

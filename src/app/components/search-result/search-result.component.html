@@ -1,0 +1,42 @@
+<p class="headline">Hakutulokset</p>
+
+<!-- cards -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="item" *ngIf="items">
+            <p *ngIf="items.length === 0">Antamillasi hakuehdoilla ei löytynyt yhtään tuotetta. <br></p>  
+            <button mat-stroked-button color="primary" (click)="backToLastPage()">Takaisin edelliselle sivulle</button>
+
+<!-- Product card-->    
+            <div class="product-card" *ngFor="let item of items | paginate: { itemsPerPage: 3, currentPage: p}">
+
+
+<!-- Product image -->
+                <div class="col">
+                    <div class="product-image">
+                        <img class="product-thumbnail" src={{item.imageUrl}}>
+
+                    </div>
+
+                </div>
+<!-- Product details -->
+                <div class="col-8">
+
+                    <div class="product-details">
+
+                        <div class="product-name">{{item.name | slice:0:35}}</div>
+                        <div class="product-description">{{(item.description | slice:0:150) +'...'}}</div>
+                            <div><mat-icon> location_on</mat-icon> {{item.owner.address.city}}</div>
+                        <div class="button"><button mat-raised-button color="primary" routerLink="/app-item-details/{{item.id}}">Lisätiedot</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Paginator-->
+<pagination-controls class="my-pagination"
+    (pageChange)="p = $event"
+    previousLabel="Edellinen"
+    nextLabel="Seuraava">
+</pagination-controls>

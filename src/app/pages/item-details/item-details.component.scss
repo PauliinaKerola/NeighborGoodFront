@@ -1,0 +1,134 @@
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .product-information {
+    width: 600px;
+    padding: 15px;
+    margin-bottom: 10px;  
+  }
+
+  .headline
+  {
+    text-align: left;
+    font-family:'Roboto';
+    padding-bottom: 20px;
+    font-size: 30px;
+    font-weight:500;
+    color:#FFCD00;
+  }
+
+.img-fluid
+{
+    margin-top:20px ;
+    border-radius: 5px;
+    width: 600px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.info
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+th{
+  padding-right: 20px;
+}
+
+
+.button-rent
+{
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.availability
+{
+  border-radius: 5px;;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left:8px;
+  padding-right: 8px;;
+  float: right;
+  // margin-bottom: 20px;
+}
+.borrowed {
+  background-color: red;
+  color:white
+}
+.not-borrowed {
+  background-color: green;
+  color:white;
+}
+.headline
+{
+  font-family:'Roboto';
+  padding-bottom: 20px;
+  font-size: 30px;
+  font-weight:500;
+  color:#FFCD00;
+}
+
+.product-information-title
+{
+font-family:'Roboto';
+  font-size: 20px;
+  font-weight:500;
+  color:rgb(39, 38, 38);
+}
+
+.product-more-information
+{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.product-description
+{
+    font-family:'Roboto';
+    font-size: 16px;
+    font-weight:normal;
+    color:rgb(39, 38, 38);
+    margin-bottom: 30px;
+}
+
+.product-category
+{
+  padding-top: 20px;
+  font-size: 16px;
+
+}
+
+.mat-icon
+{
+  color:rgb(249, 209, 64);
+}
+
+.varauskalenteri {
+  width: 570px;
+}
+  
+.booking
+{
+  padding-top:20px;
+}
+
+#date-input {
+  background-color: white;
+}
+
+.mx-2{
+  float:right;  
+}
+
+.reserve-button
+{
+  margin-left: 20px;
+}

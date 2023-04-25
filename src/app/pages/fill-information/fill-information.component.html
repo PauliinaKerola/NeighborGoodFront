@@ -1,0 +1,75 @@
+<div class="boksi">
+    <h2>Täydennä henkilötiedot</h2>
+    <div class="mt-3 form" [formGroup]="userForm" *ngIf="userForm">
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>Etunimi</mat-label>
+                    <input matInput placeholder="Etunimi" formControlName="firstName">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>Sukunimi</mat-label>
+                    <input matInput placeholder="Sukunimi" formControlName="lastName">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Puhelinnumero</mat-label>
+                <input matInput placeholder="Puhelinnumero" formControlName="phone">
+            </mat-form-field>
+        </div>
+        <div class="row" *ngIf="!user.email">
+            <mat-form-field appearance="outline">
+                <mat-label>Sähköposti</mat-label>
+                <input type="email" email matInput placeholder="Sähköposti" formControlName="email">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Katuosoite</mat-label>
+                <input matInput placeholder="Esim. Veturikuja 1 A 3" formControlName="street">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>Postinumero</mat-label>
+                    <input matInput placeholder="00101" formControlName="zipCode">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>Postitoimipaikka</mat-label>
+                    <input matInput placeholder="Tampere" formControlName="city">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <mat-accordion class="accordion tos" >
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header class="expansion_panel">
+                        <mat-panel-title>
+                            Käyttöehdot
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="terms">{{termsAndConds}}</div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div class="row">
+            <mat-checkbox color="primary" formControlName="terms">Hyväksy käyttöehdot</mat-checkbox>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button mat-raised-button color="primary" (click)="submit()"
+                    [disabled]="userForm.invalid">Tallenna</button>
+            </div>
+            <div class="col-md-3">
+                <button mat-raised-button color="warn" (click)="cancel()">Peruuta</button>
+            </div>
+        </div>
+    </div>
+</div>

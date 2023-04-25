@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h3 class="headline">Oma profiili</h3>
+      <div class="person-info">
+        <mat-card class="person-card">
+          <mat-card-content class="card-row">
+            <img class="profilepic" src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
+              alt="Profiilikuva" /></mat-card-content>
+          <mat-card-content class="card-row" *ngIf="user">{{ user.firstName }} {{ user.lastName }}</mat-card-content>
+          <mat-card-content class="card-row" *ngIf="user">{{
+            user.email
+            }}</mat-card-content>
+          <mat-card-content class="card-row" *ngIf="user">{{
+            user.phone
+            }}</mat-card-content>
+          <mat-card-content class="card-row" *ngIf="user">{{
+            user.address.street
+            }}</mat-card-content>
+          <mat-card-content class="card-row" *ngIf="user">{{ user.address.zipCode }}
+            {{ user.address.city }}</mat-card-content>
+          <mat-card-content class="card-row"></mat-card-content>
+          <mat-card-content class="card-button"><button (click)="editProfile()" class="edit-button" mat-mini-fab color="primary"
+              matTooltip="Muokkaa profiilia">
+              <mat-icon>edit</mat-icon>
+            </button><button (click)="deleteConfirmation()" class="delete-button" mat-mini-fab
+              color="primary" matTooltip="Poista profiili">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-content>
+          <mat-card-content class="card-button"> </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="col-6">
+      <nav>
+        <div class="container-items" *ngIf="user?.items">
+          <h3 class="headline">Omat lainatavarat</h3>
+
+          <ul class="col item-list">
+            <li class="item-list-item" *ngFor="let item of user.items">
+              <img (click)="goToItem(item.id)" class="item-image" src="{{ item.imageUrl }}" alt="Kuva" />
+              {{item.name | slice:0:35}}
+              <button class="edit-button mx-1" mat-mini-fab color="primary" matTooltip="Muokkaa lainatavaraa"
+                (click)="editItem(item.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="delete-button mx-1" mat-mini-fab color="warn" matTooltip="Poista lainatavara"
+                (click)="deleteItem(item.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-color">
+  <div class="items-assortment">
+    <div class="row">
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Omat lainaamani tavarat">
+          <div class="items-box mat-elevation-z2">
+            <div class="container-items" *ngIf="usersReservations">
+              <h3 class="headline">Omat lainaamani tavarat</h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tuotekuva</th>
+                    <th scope="col">Tuotenimi</th>
+                    <th scope="col">Varauspvm</th>
+                    <th scope="col">Yhteystiedot</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let reservation of usersReservations">
+                    <td><img class="item-image" src="{{ reservation.item.imageUrl }}" alt="Kuva" /></td>
+                    <td>{{reservation.item.name}}</td>
+                    <td>{{reservation.reservationDate | date:"d.M.yyyy"}}</td>
+                    <!-- <td><button mat-raised-button color="primary" (click)="contactInformation(reservation.item.owner)"> Katso yhteystiedot</button></td> -->
+                    <td><span id="contact-info" (click)="contactInformation(reservation.item.owner)"> Katso yhteystiedot</span></td>
+                    <td><button mat-raised-button color="warn" (click)="cancelReservation(reservation.id)">Peru
+                        varaus</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Omat lainassa olevat tavarat">
+          <div class="items-box mat-elevation-z2">
+            <div class="container-items" *ngIf="reservations">
+              <h3 class="headline">Omat lainassa olevat tavarat</h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tuotekuva</th>
+                    <th scope="col">Tuotenimi</th>
+                    <th scope="col">Varauspvm</th>
+                    <th scope="col">Varaaja</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let reservation of reservations">
+                    <td><img class="item-image" [src]="reservation.item.imageUrl" alt="Kuva" /></td>
+                    <td>{{reservation.item.name}}</td>
+                    <td>{{reservation.reservationDate | date:'dd.MM.yyyy'}}</td>
+                    <td>{{reservation.reserver.firstName}} {{reservation.reserver.lastName}}</td>
+                    <td><button mat-raised-button color="warn" (click)="cancelReservation(reservation.id)">Peru
+                        varaus</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

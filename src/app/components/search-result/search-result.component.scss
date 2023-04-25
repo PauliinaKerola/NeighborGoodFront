@@ -1,0 +1,102 @@
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center
+
+}
+
+.product-card {
+  width: 600px;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: solid;
+  border-color: #d3d3d4;
+  border-width:thin;
+}
+
+
+.product-thumbnail
+{
+  object-fit: cover;
+  width: 200px ; 
+  height: 130px;
+  margin-right: 20px;
+  border-radius: 5%;
+  
+}
+
+
+.headline
+{
+  text-align: center;
+  font-family:'Roboto';
+  padding-bottom: 20px;
+  padding-top: 50px;
+  font-size: 30px;
+  font-weight:500;
+  color:#FFCD00;
+}
+
+
+.paginator
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom:20px;
+
+}
+
+.button
+{
+  float:right;
+}
+
+.button-all
+{
+  text-align: center;}
+
+.mat-icon
+{
+  color:#FFCD00;
+}
+
+.product-name
+{
+  font-family:'Roboto';
+  font-size: 20px;
+  font-weight:500;
+  color:#636164;
+}
+
+.product-description
+{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.product-category
+{
+  font-family:'Roboto';
+  font-size: 16px;
+  font-weight:normal;
+  color:#636164;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background:#FFCD00;
+
+}
+
+.my-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom:20px;
+}

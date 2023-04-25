@@ -1,0 +1,22 @@
+<headline>Viimeksi lisätyt tuotteet</headline>
+<!-- cards -->
+<div class="container">
+            <div class="row justify-content-md-center">
+            <div class="product-card" *ngFor="let item of items | slice:0:3">
+
+                <div class="col-sm">
+                    <mat-card>
+                        <img class="product-image" src={{item.imageUrl}}>
+                        <mat-card-content>
+                            <div class="product-category">{{item.category.name}}</div>
+                            <div class="product-name">{{item.name | slice:0:35}}</div>
+                            <div class="box-footer"><mat-icon> location_on</mat-icon> {{item.owner.address.city}}
+                            <button mat-raised-button color="primary" class="button" routerLink="/app-item-details/{{item.id}}">Lisätiedot</button></div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        <div class="button-all"><button mat-stroked-button color="primary" routerLink="items">Katso kaikki tuotteet</button></div>
+    </div>
+</div>
+

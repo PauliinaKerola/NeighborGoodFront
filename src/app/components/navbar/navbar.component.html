@@ -1,0 +1,23 @@
+<mat-toolbar class="toolbar">
+  <div id="left">
+    <button mat-icon-button matTooltip="Etusivu" routerLink="">
+      <mat-icon class="home-button">home</mat-icon>
+    </button>
+    <button *ngIf="auth.isAuthenticated$ | async" mat-icon-button matTooltip="Lisää esine" routerLink="add-item">
+      <mat-icon class="plus-button">plus_one</mat-icon>
+    </button>
+  </div>
+  <div id="center">
+    <img id="center" src="../../../assets/images/neighborGood_logo_vaaka.png">
+  </div>
+  <div id="right" *ngIf="(auth.isAuthenticated$ | async) === false">
+    <app-login-button></app-login-button>
+  </div>
+  <div *ngIf="auth.isAuthenticated$ | async">
+    <span>{{userName}}</span>
+    <button mat-icon-button matTooltip="Profiili" routerLink="profile">
+      <mat-icon>face</mat-icon>
+    </button>
+    <app-logout-button> </app-logout-button>
+  </div>
+</mat-toolbar>

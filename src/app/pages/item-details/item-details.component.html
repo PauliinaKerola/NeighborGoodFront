@@ -1,0 +1,92 @@
+<div class="container mt-3" *ngIf="item">
+  <div class="product-information">
+    <div class="product-detail">
+      <button mat-stroked-button color="primary" (click)="backToLastPage()">Takaisin edelliselle sivulle</button>
+      <div *ngIf=!showMap>
+        <img src={{item.imageUrl}} class="img-fluid" alt="">
+      </div>
+      <div *ngIf=showMap>
+        <app-item-map [lat]="item.owner.latitude" [lng]="item.owner.longitude" class="img-fluid"></app-item-map>
+      </div>
+      <div class="info"><mat-icon> location_on</mat-icon> {{item.owner.address.city}}
+        <div *ngIf=!showMap>
+          <button class="mx-2" mat-raised-button color="primary" (click)="showMap=!showMap">Näytä kartalla</button>
+        </div>
+        <div *ngIf=showMap>
+          <button class="mx-2" mat-raised-button color="primary" (click)="showMap=!showMap">Näytä kuva</button>
+        </div>
+      </div>
+      <div class="product-category">{{item.category.name}}</div>
+      <div class="headline">{{item.name}}</div>
+      <h5>Kuvaus:</h5>
+      <div class="product-description">{{item.description}}</div>
+
+      <!-- Lainaajan tiedot-->
+      <div class="product-more-information">
+        <mat-accordion class="product-more-information">
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="product-information-title">
+                Yhteystiedot
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <table class="contact-info" *ngIf="auth.isAuthenticated$ | async; else noInfo">
+              <tr>
+                <th>Nimi:</th>
+                <td>{{item.owner.firstName}} {{item.owner.lastName}}</td>
+              </tr>
+              <tr>
+                <th>Osoite:</th>
+                <td>{{item.owner.address.street}}</td>
+              </tr>
+              <tr>
+                <th>Paikkakunta:</th>
+                <td>{{item.owner.address.city}}</td>
+              </tr>
+              <tr>
+                <th>Email:</th>
+                <td>{{item.owner.email}}</td>
+              </tr>
+              <tr>
+                <th>Puhelinnumero:</th>
+                <td>{{item.owner.phone}}</td>
+              </tr>
+            </table>
+            <ng-template #noInfo><p>Kirjaudu sisään nähdäksesi yhteystiedot</p></ng-template>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <!-- Lainausehdot-->
+      <div class="product-more-information">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="product-information-title">
+                Lisätiedot
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>{{item.addInfo}}</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <p class="headline">Varauskalenteri</p>
+      <div *ngIf="auth.isAuthenticated$ | async; else login">
+        <mat-form-field appearance="outline" *ngIf="reservations">
+          <mat-label>Valitse päivä</mat-label>
+          <input matInput [min]="todayDate" [formControl]="reservation" [matDatepicker]="picker"
+            [matDatepickerFilter]="reservationFilter">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button class="reserve-button" mat-raised-button color="primary" (click)="reserveDay()" [disabled]="reservation.invalid">Varaa</button>
+      </div>
+      <ng-template #login>
+        <a href="" (click)="loginPlease()">Kirjaudu sisään varataksesi tuotteen</a>
+      </ng-template>
+    </div>
+  </div>

@@ -1,0 +1,47 @@
+<div class="container">
+  <p class="headline">Lisää lainatavara</p>
+  <mat-form [formGroup]="itemForm">
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Tavaran nimi</mat-label>
+          <input matInput placeholder="esim. porakone" formControlName="itemName" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Kategoria</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Kuvaus</mat-label>
+        <textarea id="textarea" matInput placeholder="Poraa kiveen ja betoniin..." formControlName="description" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Lisätiedot</mat-label>
+        <textarea id="textarea" matInput placeholder="Tavaran voi hakea..." formControlName="addInfo" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div>
+        <div>Kuva:</div>
+        <input type="file" accept="image/png, image/jpeg" formControlName="file" (change)="onFileChange($event)" />
+      </div>
+    </div>
+    <div class="row mt-2">
+      <button (click)="submit()" color="primary" type="submit" mat-raised-button [disabled]="itemForm.invalid">
+        Tallenna
+      </button>
+    </div>
+  </mat-form>
+</div>

@@ -1,0 +1,86 @@
+.container {
+  align-content: center;
+  padding-top: 70px;
+}
+.profilepic {
+  width: 160px;
+}
+.person-info {
+  margin: 20px;
+  margin-left: 0;
+}
+.person-card {
+  row-gap: 15px;
+}
+.card-button2 {
+  background-color: blue;
+}
+.card-row {
+  align-self: center;
+}
+.item-image {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  object-position: center;
+}
+.item-image:hover{
+  cursor: pointer;
+}
+
+.item-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.headline {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color:#FFCD00;
+  padding-bottom: 20px;
+}
+nav ul{height:435px; width:500px;}
+nav ul{overflow:hidden; overflow-y:scroll;}
+
+
+.items-assortment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.bottom-color {
+  background-color:rgb(240, 240, 240);
+  width:100%;
+  padding-bottom: 50px;
+  margin-top: 50px;
+
+}
+
+.items-box {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 50px;
+  padding-bottom: 40px;
+  padding-top: 50px;
+  border-radius: 5px;
+  background-color:white;
+  width: 1000px;;
+
+}
+
+.table {
+  width: 900px;
+}
+
+#contact-info {
+  color:blue;
+}
+#contact-info:hover {
+  cursor: pointer;
+}

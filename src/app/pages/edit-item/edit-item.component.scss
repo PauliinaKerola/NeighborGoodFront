@@ -1,0 +1,26 @@
+#item-image {
+    max-width: 200px;
+}
+
+.headline
+{
+  text-align: center;
+  font-family:'Roboto';
+  padding-bottom: 20px;
+  padding-top: 50px;
+  font-size: 30px;
+  font-weight:500;
+  color:#FFCD00;
+}
+
+.container {
+  // border: solid;
+  align-content: center;
+  // padding-top: 70px;
+
+  // height: 100%;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
